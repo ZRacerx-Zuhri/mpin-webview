@@ -1,0 +1,504 @@
+.container-home {
+  // border: springgreen 8px solid;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  min-height: 100vh;
+  @keyframes toRight {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  @keyframes toLeft {
+    0% {
+      left: 0;
+    }
+    100% {
+      left: -100%;
+    }
+  }
+
+  @keyframes comeRight {
+    0% {
+      left: 100%;
+    }
+    100% {
+      left: 0;
+    }
+  }
+
+  @keyframes comeLeft {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 0;
+    }
+  }
+  .container-conten-home {
+    // border: solid rgb(255, 30, 0) 3px;
+    // min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    .box-container-carrosel {
+      // border: springgreen 2px solid;
+      width: 100%;
+      max-width: 1440px;
+      @include respondTo(Xlarge) {
+        padding: 0px 22px;
+      }
+      // padding: 0 22px;
+
+      .container-conten-image {
+        // border: solid rgb(0, 255, 34) 3px;
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        @include respondTo(Xlarge) {
+          max-width: 1440px;
+        }
+
+        .carousel-container-aku {
+          // border: solid rgb(56, 179, 19) 3px;
+          cursor: pointer;
+          position: relative;
+
+          @include respondTo(large) {
+            min-height: 52vw;
+          }
+          @include respondTo(Xlarge) {
+            min-height: 750px;
+          }
+          @include respondTo(phone) {
+            min-height: 55vw;
+          }
+
+          width: 100%;
+
+          .image-conten {
+            // border: solid rgb(56, 179, 19) 3px;
+            display: flex;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            z-index: 0;
+            width: 100%;
+
+            &.show-again {
+              display: flex;
+            }
+
+            &.show {
+              left: 0;
+            }
+            &.hidden-left {
+              left: -100%;
+            }
+            &.hidden-right {
+              left: 100%;
+            }
+            &.gone {
+              display: none;
+            }
+
+            &.hide-left {
+              animation: toLeft 0.5s ease-in-out forwards;
+            }
+            &.come-left {
+              animation: comeLeft 0.5s ease-in-out forwards;
+            }
+
+            &.hide-right {
+              animation: toRight 0.5s ease-in-out forwards;
+            }
+            &.come-right {
+              animation: comeRight 0.5s ease-in-out forwards;
+            }
+
+            .image-info {
+              position: relative;
+              // border: tomato 7px solid;
+              z-index: 3;
+              flex-grow: 1;
+              // padding: 20px;
+              .img-slide {
+                width: 100%;
+                height: 100%;
+                // border: solid springgreen 3px;
+              }
+
+              .container-info-conten {
+                // border: springgreen 2px solid;
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                z-index: 2;
+                background: rgba(0, 0, 0, 0.1);
+                bottom: 0;
+                top: 0;
+                right: 0;
+                left: 0;
+                color: rgb(255, 255, 255);
+
+                .icon-play-menu {
+                  margin: auto;
+                  display: flex;
+                  margin-top: auto;
+                  // background-color: rgba(255, 255, 255, 0.15);
+                  // border: springgreen 2px solid;
+                  padding: 0;
+                  width: 100px;
+                  height: 100px;
+                  @include respondTo(tablet) {
+                    width: 72px;
+                    height: 72px;
+                  }
+                  @include respondTo(phone) {
+                    width: 52px;
+                    height: 52px;
+                  }
+                  @include respondTo(Xlarge) {
+                    width: 15%;
+                    height: 15%;
+                  }
+                }
+                .conten-title {
+                  &-h2 {
+                    margin-bottom: 5px;
+                    font-size: 36px;
+                    font-family: "Raleway", sans-serif;
+                    font-family: "Roboto", sans-serif;
+                    @include respondTo(tablet) {
+                      font-size: 26px;
+                    }
+                    @include respondTo(phone) {
+                      font-size: 16px;
+                    }
+                  }
+                  &-h1 {
+                    font-size: 56px;
+                    font-family: "Raleway", sans-serif;
+                    font-family: "Roboto", sans-serif;
+                    @include respondTo(tablet) {
+                      font-size: 32px;
+                    }
+                    @include respondTo(phone) {
+                      font-size: 22px;
+                    }
+                  }
+                  position: absolute;
+                  // border: springgreen solid 2px;
+                  bottom: 10%;
+                  margin-left: 10%;
+                  // padding: 5%;
+                }
+              }
+            }
+          }
+        }
+
+        .container-btn-carousel {
+          // border: solid 3px red;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          z-index: 1;
+          background: linear-gradient(
+            90deg,
+            rgba(3, 2, 2, 0.699) 0%,
+            rgba(0, 0, 0, 0) 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
+
+          .btn-right-carousel {
+            @include respondTo(phone) {
+              padding: 0px 16px;
+            }
+            padding: 0px 50px;
+            height: 100%;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+
+        .container-btn-carousel:hover {
+          background: linear-gradient(
+            90deg,
+            rgba(3, 2, 2, 0.836) 0%,
+            rgba(0, 0, 0, 0) 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        }
+
+        .container-btn-carousel:last-child:hover {
+          background: linear-gradient(
+            -90deg,
+            rgba(3, 2, 2, 0.774) 0%,
+            rgba(0, 0, 0, 0) 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        }
+
+        .container-btn-carousel:last-child {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+
+          background: linear-gradient(
+            -90deg,
+            rgba(3, 2, 2, 0.699) 0%,
+            rgba(0, 0, 0, 0) 100%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          .btn-right-carousel {
+            @include respondTo(phone) {
+              padding: 0px 16px;
+            }
+            padding: 0px 50px;
+            height: 100%;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .container-leaderboard {
+    // border: solid greenyellow 2px;
+    margin-top: 36px;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    padding: 0 22px;
+    @include respondTo(phone) {
+      margin-top: 16px;
+    }
+    .img-leaderboard {
+      width: 100%;
+    }
+  }
+
+  .container-list-video {
+    // border: solid greenyellow 2px;
+    margin-top: 36px;
+    @include respondTo(phone) {
+      margin-top: 16px;
+    }
+    margin-bottom: 32px;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+    padding: 0 22px;
+    h1 {
+      font-weight: bolder;
+      font-size: 32px;
+      font-family: "Raleway", sans-serif;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 16px;
+      @include respondTo(tablet) {
+        font-size: 22px;
+      }
+      @include respondTo(phone) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .conten-breakdown {
+    display: flex;
+    // border: solid red 2px;
+    flex-direction: column;
+    max-width: 1440px;
+    width: 100%;
+    padding: 0 22px;
+    margin-bottom: 32px;
+    h1 {
+      font-weight: bolder;
+      font-size: 32px;
+      font-family: "Raleway", sans-serif;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 16px;
+      @include respondTo(tablet) {
+        font-size: 22px;
+      }
+      @include respondTo(phone) {
+        font-size: 16px;
+      }
+    }
+
+    .container-latest-video {
+      // border: solid greenyellow 2px;
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      column-gap: 32px;
+
+      @include respondTo(Ltablet) {
+        grid-template-columns: 1fr;
+      }
+      @include respondTo(tablet) {
+        grid-template-columns: 1fr;
+      }
+      @include respondTo(phone) {
+        grid-template-columns: 1fr;
+      }
+
+      .container-conten-latest-video {
+        // border: rgb(255, 115, 0) solid 2px;
+        display: flex;
+        flex-direction: column;
+        .container-thumb-latest-video {
+          // border: rgb(0, 255, 98) solid 2px;
+          display: flex;
+          margin-bottom: 22px;
+
+          @include respondTo(tablet) {
+            // flex-direction: column;
+          }
+          @include respondTo(phone) {
+            flex-direction: column;
+          }
+
+          .conten-thumb-latest-video {
+            // border: red solid 2px;
+            cursor: pointer;
+            width: 380px;
+            @include respondTo(Ltablet) {
+              width: 65%;
+            }
+            @include respondTo(tablet) {
+              width: 360px;
+            }
+            @include respondTo(phone) {
+              width: 100%;
+            }
+            position: relative;
+            display: flex;
+            .thumb-video-latest {
+              width: 100%;
+            }
+            .container-icon-play-latest-video {
+              display: flex;
+              position: absolute;
+              z-index: 2;
+              background: rgba(0, 0, 0, 0.1);
+              bottom: 0;
+              top: 0;
+              right: 0;
+              left: 0;
+              .icon-play-latest-video {
+                margin: auto;
+                display: flex;
+                padding: 0;
+                width: 45px;
+                height: 45px;
+
+                @include respondTo(phone) {
+                  width: 52px;
+                  height: 52px;
+                }
+              }
+            }
+          }
+
+          .desc-latest-video {
+            padding: 12px 12px 12px 24px;
+
+            @include respondTo(phone) {
+              padding: 10px 0px;
+            }
+            p {
+              font-weight: 300;
+              font-size: 16px;
+              max-width: 520px;
+              text-align: justify;
+              @include respondTo(tablet) {
+                font-size: 14px;
+              }
+
+              @include respondTo(phone) {
+                max-width: 100%;
+                // font-size: 12px;
+              }
+
+              font-family: "Lato", sans-serif;
+              font-family: "Nunito", sans-serif;
+              font-family: "Roboto", sans-serif;
+              color: rgb(80, 80, 80);
+            }
+            h3 {
+              font-weight: 600;
+              font-size: 20px;
+              margin-bottom: 5px;
+              font-family: "Lato", sans-serif;
+              font-family: "Nunito", sans-serif;
+              font-family: "Roboto", sans-serif;
+              color: rgb(0, 0, 0);
+              @include respondTo(tablet) {
+                font-size: 18px;
+              }
+              // @include respondTo(phone) {
+              //   font-size: 16px;
+              // }
+            }
+            h4 {
+              font-size: 16px;
+              font-weight: 800;
+              margin-bottom: 5px;
+              font-family: "Lato", sans-serif;
+              font-family: "Nunito", sans-serif;
+              font-family: "Roboto", sans-serif;
+              color: rgb(80, 80, 80);
+              @include respondTo(tablet) {
+                font-size: 14px;
+              }
+              // @include respondTo(phone) {
+              //   font-size: 12px;
+              // }
+            }
+          }
+        }
+      }
+      .container-bottom-nav {
+        display: flex;
+        // border: solid red 2px;
+        @include respondTo(Ltablet) {
+          margin-top: 12px;
+        }
+
+        .container-board-bottom {
+          // border: solid red 2px;
+          width: 100%;
+
+          .img-leaderboard-bottom {
+            width: 100%;
+            @include respondTo(Ltablet) {
+              width: 50%;
+            }
+            @include respondTo(tablet) {
+              width: 50%;
+            }
+            @include respondTo(phone) {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

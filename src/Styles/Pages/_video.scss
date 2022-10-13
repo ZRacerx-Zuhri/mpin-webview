@@ -1,0 +1,39 @@
+.container-full-video {
+  display: flex;
+  flex-direction: column;
+  // border: red 2px solid;
+
+  margin: auto;
+
+  align-items: center;
+
+  .container-play-video {
+    // border: rgb(21, 0, 214) 2px solid;
+
+    display: flex;
+    padding: 16px 16px;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(34, 34, 34, 0.856);
+    .conten-play-video {
+      // border: rgb(255, 38, 0) 1px solid;
+      max-width: 1440px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      .video {
+        width: 78%;
+        height: 100%;
+        object-fit: fill;
+
+        @include respondTo(phone) {
+          width: 100%;
+          height: 100%;
+          object-fit: fill;
+          // border: solid 2px white;
+        }
+      }
+    }
+  }
+}
