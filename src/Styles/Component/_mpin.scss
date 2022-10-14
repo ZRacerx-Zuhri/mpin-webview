@@ -4,8 +4,14 @@ display: flex;
 flex-direction: column;
 height:100vh;
 
+.logo-oy {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .conten-title{
-  margin-top: 150px;
+  // margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
   font-size:large;

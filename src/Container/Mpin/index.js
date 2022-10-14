@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FiDelete } from "react-icons/fi";
-// import logo from "../../Assets/Oylogo.png";
+import logo from "../../Assets/Oylogo.svg";
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "clear"];
 
 const initialPin = { a: "", b: "", c: "", d: "", e: "", f: "" };
@@ -19,7 +19,7 @@ const Mpin = () => {
         let key = Object.keys(pin)[i];
         if (!pin[key]) {
           const newPin = { ...pin };
-          newPin[key] = btn;
+          newPin[key] = btn.toString();
           setPin(newPin);
           break;
         }
@@ -43,7 +43,7 @@ const Mpin = () => {
   return (
     <>
       <div className="container-mpin">
-        {/* <img src={logo} alt="Oy" width={150} /> */}
+        <img src={logo} alt="Oy" width={65} className="logo-oy" />
         <div className="conten-title">Masukan PIN Anda</div>
         <div className="container-dot">
           {Object.keys(pin).map((pinKey, idx) =>
