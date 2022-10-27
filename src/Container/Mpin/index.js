@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { FiDelete } from "react-icons/fi";
+import { useParams } from "react-router-dom";
 import logo from "../../Assets/Oylogo.svg";
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "clear"];
 
 const initialPin = { a: "", b: "", c: "", d: "", e: "", f: "" };
 const Mpin = () => {
+  let { no_rek, no_hp, bpr_id, reff, amount, tgl_trans } = useParams();
+
+  console.log(no_rek, no_hp, bpr_id, reff, amount, tgl_trans);
   const [pin, setPin] = useState({ ...initialPin });
 
   useEffect(() => {
@@ -44,7 +48,7 @@ const Mpin = () => {
     <>
       <div className="container-mpin">
         <img src={logo} alt="Oy" width={65} className="logo-oy" />
-        <div className="conten-title">Masukan PIN Anda</div>
+        <div className="conten-title">Masukan mPIN iBPR Anda</div>
         <div className="container-dot">
           {Object.keys(pin).map((pinKey, idx) =>
             pin[pinKey] ? (

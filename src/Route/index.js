@@ -3,7 +3,7 @@ import Mpin from "../Container/Mpin";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/:no_rek/:no_hp/:bpr_id/:reff/:amount/:tgl_trans",
     element: <Mpin />,
   },
 ]);
