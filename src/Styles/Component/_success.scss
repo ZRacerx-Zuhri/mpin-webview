@@ -1,0 +1,45 @@
+.container-success {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    // border: 3px solid red;
+    // position: relative;
+
+
+@include respondTo(phone) {
+    // border: rgb(255, 196, 0) solid 2px;
+    // width: 100%;
+    min-width: 300px;
+  }
+  
+  @include respondTo(tablets) {
+      // border: red solid 2px;
+      width: 355px;
+  }
+  
+  @include respondTo(desktops) {
+    // border: rgb(0, 21, 255) solid 2px;
+    width: 465px;
+  }
+  
+  @include respondTo(Xlarge) {
+    // border: rgb(43, 201, 37) solid 2px;
+    width: 565px;
+  }
+
+  .success-title{
+    font-size:large;
+    font-family: 'Lato', sans-serif;
+    font-weight:bold;
+    color: rgb(114, 114, 114);
+    margin-top: 12px;
+  }
+  .container-success-conten{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

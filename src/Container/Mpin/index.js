@@ -1,23 +1,62 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { FiDelete } from "react-icons/fi";
-import { useParams } from "react-router-dom";
+
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import logo from "../../Assets/Oylogo.svg";
+import {
+  resetValidasiMpin,
+  ValidasiMpinApi,
+} from "../../Redux/Reducer/VerifikasiMpin";
+import { Oval } from "react-loading-icons";
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "clear"];
 
 const initialPin = { a: "", b: "", c: "", d: "", e: "", f: "" };
 const Mpin = () => {
-  let { no_rek, no_hp, bpr_id, reff, amount, tgl_trans } = useParams();
-
-  console.log(no_rek, no_hp, bpr_id, reff, amount, tgl_trans);
+  const navigate = useNavigate();
+  let { no_rek, no_hp, bpr_id, rrn, tgl_trans } = useParams();
+  const ValidasiMpin = useSelector((state) => state.ValidasiMpin);
+  const dispatch = useDispatch();
   const [pin, setPin] = useState({ ...initialPin });
+
+  // console.log(no_rek, no_hp, bpr_id, rrn, amount, tgl_trans);
+  console.log(ValidasiMpin);
+  console.log(Object.values(pin).join(""));
 
   useEffect(() => {
     if (Object.values(pin).join("").length === Object.keys(pin).length) {
-      console.log(Object.values(pin).join(""));
+      dispatch(
+        ValidasiMpinApi({
+          no_hp,
+          bpr_id,
+          no_rek,
+          tgl_trans,
+          rrn,
+          pin: Object.values(pin).join(""),
+        })
+      );
+
+      // console.log(Object.values(pin).join(""));
     }
   }, [pin]);
 
+  useEffect(() => {
+    if (ValidasiMpin.success) {
+      console.log(ValidasiMpin.data.token_mpin);
+      navigate(`/${ValidasiMpin.data.token_mpin}`);
+    }
+
+    if (ValidasiMpin.failed && ValidasiMpin.data?.code === "006") {
+      setPin(initialPin);
+    } else if (ValidasiMpin.failed) {
+      navigate(`/failed`);
+    }
+  }, [ValidasiMpin.success, ValidasiMpin.failed]);
   const onEnterPin = (btn) => {
+    if (ValidasiMpin.failed && ValidasiMpin.data?.code === "006") {
+      dispatch(resetValidasiMpin());
+    }
     if (typeof btn === "number") {
       for (let i = 0; i < Object.keys(pin).length; i += 1) {
         let key = Object.keys(pin)[i];
@@ -44,9 +83,18 @@ const Mpin = () => {
       }
     }
   };
+
   return (
     <>
       <div className="container-mpin">
+        {!ValidasiMpin.fetching ? null : (
+          <div className="loading-process">
+            <div className="conten-load">
+              <Oval stroke="#0d47a1" strokeWidth={3} height={50} />
+              <div className="title-load">Mohon Tunggu</div>
+            </div>
+          </div>
+        )}
         <img src={logo} alt="Oy" width={65} className="logo-oy" />
         <div className="conten-title">Masukan mPIN iBPR Anda</div>
         <div className="container-dot">
@@ -54,10 +102,20 @@ const Mpin = () => {
             pin[pinKey] ? (
               <span key={idx} className="dot-color"></span>
             ) : (
-              <span key={idx} className="dot"></span>
+              <span
+                key={idx}
+                className={`dot ${
+                  ValidasiMpin.failed && ValidasiMpin.data?.code === "006"
+                    ? "dot-danger"
+                    : "dot"
+                }`}
+              ></span>
             )
           )}
         </div>
+        {ValidasiMpin.failed && ValidasiMpin.data?.code === "006" ? (
+          <div className="error-message">{ValidasiMpin.data?.message}</div>
+        ) : null}
 
         <div className="container-keynumber">
           {data.map((val, idx) => {

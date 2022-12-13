@@ -3,6 +3,35 @@ margin: auto;
 display: flex;
 flex-direction: column;
 height:100vh;
+// border: 3px solid red;
+position: relative;
+
+
+.loading-process{
+  // border: 1px solid red;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #0000002e;
+
+  .title-load{
+    font-size:medium;
+    font-family: 'Lato', sans-serif;
+    font-weight:bold;
+    color: rgb(114, 114, 114);
+  }
+
+  .conten-load {
+    margin-top:50%;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
 
 .logo-oy {
   margin-top: 50px;
@@ -59,6 +88,8 @@ height:100vh;
   //   margin-right: 45px
   // }
 
+ 
+
   .dot {
     height: 22px;
     width: 22px;
@@ -70,6 +101,12 @@ height:100vh;
     width: 22px;
     background-color:#0d47a1;
     border-radius: 50%;
+  }
+  .dot-danger{
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background-color: #d50000;
   }
 }
 
@@ -109,6 +146,14 @@ height:100vh;
   }
 
   
+}
+
+.error-message{
+  margin-top: 12px;
+  margin-left: 65px;
+  margin-right: 65px;
+  text-align: center;
+  color:#d50000;
 }
 
 
