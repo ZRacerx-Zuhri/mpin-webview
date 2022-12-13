@@ -1,8 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { GiCancel } from "react-icons/gi";
-import { useParams } from "react-router-dom";
-import logo from "../../Assets/Oylogo.svg";
-import { ValidasiMpinApi } from "../../Redux/Reducer/VerifikasiMpin";
 
 const Failed = () => {
   const ValidasiMpin = useSelector((state) => state.ValidasiMpin);

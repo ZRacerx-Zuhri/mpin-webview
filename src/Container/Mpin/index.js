@@ -43,8 +43,8 @@ const Mpin = () => {
 
   useEffect(() => {
     if (ValidasiMpin.success) {
-      console.log(ValidasiMpin.data.token_mpin);
-      navigate(`/${ValidasiMpin.data.token_mpin}`);
+      console.log(ValidasiMpin.data.data.token_mpin);
+      navigate(`/${ValidasiMpin.data.data.token_mpin}`);
     }
 
     if (ValidasiMpin.failed && ValidasiMpin.data?.code === "006") {
