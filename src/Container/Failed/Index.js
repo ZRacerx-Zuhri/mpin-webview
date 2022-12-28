@@ -3,7 +3,7 @@ import { GiCancel } from "react-icons/gi";
 
 const Failed = () => {
   const ValidasiMpin = useSelector((state) => state.ValidasiMpin);
-  console.log(ValidasiMpin);
+  // console.log(ValidasiMpin);
   return (
     <>
       <div className="container-failed">

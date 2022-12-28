@@ -13,11 +13,11 @@ export const ValidasiMpinApi = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const res = await axiosInstance.post("/oy/validate_mpin", data);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.code !== "000") return rejectWithValue(res.data);
       return res.data;
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       return rejectWithValue(error.message);
     }
   }

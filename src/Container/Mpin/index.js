@@ -33,7 +33,7 @@ const Mpin = () => {
           no_rek,
           tgl_trans,
           rrn,
-          pin: Object.values(pin).join(""),
+          pin: parseInt(Object.values(pin).join("")) * 2 + 999999 - 111111,
         })
       );
 
@@ -43,8 +43,8 @@ const Mpin = () => {
 
   useEffect(() => {
     if (ValidasiMpin.success) {
-      console.log(ValidasiMpin.data.data.token_mpin);
-      navigate(`success/${ValidasiMpin.data.data.token_mpin}`);
+      // console.log(ValidasiMpin.data);
+      navigate(`/success/${ValidasiMpin.data.data.token_mpin}`);
     }
 
     if (ValidasiMpin.failed && ValidasiMpin.data?.code === "006") {
