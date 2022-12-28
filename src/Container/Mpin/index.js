@@ -15,14 +15,14 @@ const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "clear"];
 const initialPin = { a: "", b: "", c: "", d: "", e: "", f: "" };
 const Mpin = () => {
   const navigate = useNavigate();
-  let { no_rek, no_hp, bpr_id, rrn, tgl_trans } = useParams();
+  let { no_rek, no_hp, bpr_id, amount, trx_code, tgl_trans, rrn } = useParams();
   const ValidasiMpin = useSelector((state) => state.ValidasiMpin);
   const dispatch = useDispatch();
   const [pin, setPin] = useState({ ...initialPin });
 
-  // console.log(no_rek, no_hp, bpr_id, rrn, amount, tgl_trans);
-  console.log(ValidasiMpin);
-  console.log(Object.values(pin).join(""));
+  // console.log(no_rek, no_hp, bpr_id, amount, trx_code, tgl_trans, rrn);
+  // console.log(ValidasiMpin);
+  // console.log(Object.values(pin).join(""));
 
   useEffect(() => {
     if (Object.values(pin).join("").length === Object.keys(pin).length) {
@@ -44,7 +44,7 @@ const Mpin = () => {
   useEffect(() => {
     if (ValidasiMpin.success) {
       console.log(ValidasiMpin.data.data.token_mpin);
-      navigate(`/${ValidasiMpin.data.data.token_mpin}`);
+      navigate(`success/${ValidasiMpin.data.data.token_mpin}`);
     }
 
     if (ValidasiMpin.failed && ValidasiMpin.data?.code === "006") {
