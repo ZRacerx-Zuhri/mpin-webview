@@ -32,6 +32,7 @@ const Mpin = () => {
           bpr_id,
           no_rek,
           tgl_trans,
+          trx_code,
           rrn,
           pin: parseInt(Object.values(pin).join("")) * 2 + 999999 - 111111,
         })
