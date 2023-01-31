@@ -15,7 +15,8 @@ const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, "", 0, "clear"];
 const initialPin = { a: "", b: "", c: "", d: "", e: "", f: "" };
 const Mpin = () => {
   const navigate = useNavigate();
-  let { no_rek, no_hp, bpr_id, amount, trx_code, tgl_trans, rrn } = useParams();
+  let { no_rek, no_hp, bpr_id, amount, trans_fee, trx_code, tgl_trans, rrn } =
+    useParams();
   const ValidasiMpin = useSelector((state) => state.ValidasiMpin);
   const dispatch = useDispatch();
   const [pin, setPin] = useState({ ...initialPin });
