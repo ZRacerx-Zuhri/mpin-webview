@@ -42,6 +42,7 @@ const Mpin = () => {
     }
   }, [pin]);
 
+  console.log(ValidasiMpin.data);
   useEffect(() => {
     if (ValidasiMpin.success) {
       // console.log(ValidasiMpin.data);

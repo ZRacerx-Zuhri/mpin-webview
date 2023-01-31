@@ -5,7 +5,7 @@ import Success from "../Container/Success";
 
 const router = createBrowserRouter([
   {
-    path: "/:no_rek/:no_hp/:bpr_id/:amount/:trx_code/:tgl_trans/:rrn",
+    path: "/:no_rek/:no_hp/:bpr_id/:amount/:trans_fee/:trx_code/:tgl_trans/:rrn",
     element: <Mpin />,
   },
   {
